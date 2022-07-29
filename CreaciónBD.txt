@@ -1,0 +1,22 @@
+-- USER SQL
+CREATE USER "BIBLIOTECA" IDENTIFIED BY "biblioteca"  
+DEFAULT TABLESPACE "USERS"
+TEMPORARY TABLESPACE "TEMP";
+
+-- QUOTAS
+ALTER USER "BIBLIOTECA" QUOTA UNLIMITED ON "USERS";
+
+-- ROLES
+GRANT "CONNECT" TO "BIBLIOTECA" ;
+GRANT "RESOURCE" TO "BIBLIOTECA" ;
+ALTER USER "CLASE1" DEFAULT ROLE "CONNECT","RESOURCE";
+
+
+create table usuarios (nombre varchar2(30) primary key,
+password varchar2(30) not null, rol varchar2(30) not null);
+
+
+insert into usuarios values('admin1@gmail.com','1234','admin');
+insert into usuarios values('estudiante1@gmail.com','2468','estudiante');
+
+commit;
